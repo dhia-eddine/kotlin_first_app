@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.myapplicationz.databinding.FragmentFirstBinding
+import kotlin.random.Random
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -34,6 +35,12 @@ class FirstFragment : Fragment() {
             val myToast = Toast.makeText(context, "Hello Toast", Toast.LENGTH_LONG)
             myToast.show()
         }
+        binding.btnRandom.setOnClickListener {
+            val lastNumber = binding.counttext.text.toString().toInt()
+
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment(lastNumber)
+             findNavController().navigate(action)
+        }
 
         binding.btnCount.setOnClickListener {
             //count++
@@ -41,6 +48,8 @@ class FirstFragment : Fragment() {
 
             Count(binding)
         }
+
+
 
 
     }
